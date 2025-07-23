@@ -1,0 +1,27 @@
+all:
+  hosts:
+    web01:
+      ansible_host: 0.0.0.0   # Private IP address 1
+      ansible_user: ec2-user
+      ansible_ssh_private_key_file: keyname # name.pem
+    web02:
+      ansible_host: 0.0.0.0   # Private IP address 2
+      ansible_user: ec2-user
+      ansible_ssh_private_key_file: keyname # name.pem
+    db01:
+      ansible_host: 0.0.0.0   # Private IP address 3
+      ansible_user: ec2-user
+      ansible_ssh_private_key_file: keyname # name.pem
+
+  children:
+    webservers:
+      hosts:
+        web01:
+        web02:
+    dbservers:
+      hosts:
+        db01:
+    dc_oregon:
+      children:
+        webservers:
+        dbservers:
