@@ -1,0 +1,479 @@
+Linux Commands:
+
+$ pwd
+Desc: Shows present working directory
+
+
+$ ls
+Desc: Shows list of all files and directory at that path
+$ ls -al
+Desc: Shows list of all files and directory at that path, HIDDEN as well
+
+
+$ cd /path
+Desc: to change working directory. cd .. to go to the root directory
+
+
+$ mkdir {dirName}
+Desc: To create a working directory at current path
+
+
+$ rmdir {dirName}
+Desc: To remove a working directory at current path (Can specify full path as well for other directory)
+This will not work if directory has contents in it
+
+
+$ rmdir -r {dirName}
+Desc: To remove a working directory (Non-Empty) at current path (Can specify full path as well for other directory)
+
+
+$ touch {fileName}
+Desc: If file does not exists, it will create it. else it will modify the timestamp
+
+
+$ touch -r {referenceFileName} {fileName}
+Desc: Allows to specify a reference file and use its timestamp instead of current time
+
+
+$ cat {fileName}
+Desc: Shows contents of the file
+
+
+$ cat > {fileName}
+Desc: Redirects the input from console to the file, if file exists the contents will be overwritten
+
+
+$ cat >> {fileName}
+Desc: Redirects the input from console to the file, if file exists the contents will be appended
+
+
+$ find {dirPath} -name "expression"
+Desc: Searches for files and directories, case sensitive
+
+
+$ find {dirPath} -iname "expression"
+Desc: Searches for files and directories, NOT case sensitive
+
+
+$ find {dirPath} -type {d/f} "expression"
+Desc: Searches for files or directories based on type, case sensitive.
+d is for directory and f is for files
+
+
+$ man
+Desc: Used to display user manual
+
+
+$ man pwd
+Desc: getting manual of pwd
+
+
+$ pwd --help 	or pwd -h
+Desc: getting help wih pwd command
+
+
+$ whatis ls
+Desc: your one line help
+
+
+$ apropos pwd
+Desc: Searches through man pages and lists all in which this command exists
+
+
+$ help
+Desc: list all possible help commands that are pre-installed in the system
+
+
+$ df -h
+Desc: will show file systems disk space used
+
+
+$ mkdir -p {dirName}/{dirName}
+Desc: this will create a directory inside that another directory
+
+
+$: cp -r {path}/* {path}
+Desc: to copy all contents of 1 directory to another
+
+
+$: mv {path} {path}
+Desc: to move one file/directory to another directory.
+Tip: If you give same path and different name at the end, it will rename it
+
+
+$: chmod +x {pathOfFile}
+Desc: To make file executable
+
+
+$: ./{filePath}
+Desc: To execute a file or link
+
+
+$: ln -s {filePath} {linkName}
+Desc: to create a soft link
+
+
+$: ln {filePath} {linkName}
+Desc: to create a hard link
+
+
+$: groupadd {group_name}
+Desc: to add a new group
+
+
+$: groupadd -g {g_id} {group_name}
+Desc: To create a group with specidic group ID
+
+
+$:  useradd -u {user_id} -g {group_name}{username}
+eg: sudo useradd -u 1001 -g group1 user1
+Desc: To add a new user with custom ID and assign to a group
+
+
+$:  usermod -aG {group_name} {username}
+eg:  usermod -aG shared user2
+Desc: To add an existing user to an existing group
+
+
+$: sudo -u {username} vim /tmp/{fileName}
+eg: sudo -u user1 vim /tmp/test
+Desc: Creating a  file in /tmp with a particular user
+
+
+$: sudo -u {username} cat /tmp/{fileName}
+eg: sudo -u user2 cat /tmp/test
+Desc: To read a file using a particular user, to see if that user is allowed access
+
+
+$: chown {username}:{group_name} /tmp/{fileName}
+eg: chown user1:shared /tmp/test
+Desc: To change ownership of a file
+
+
+$: id {username}
+Desc: To get user details
+
+
+$: userdel -r {username}
+Desc: To completely remove a user
+
+$: groupdel {group_name}
+Desc: To completely remove a group
+
+
+$: su --login {username}		/ su - {username}
+Desc: to switch to a user insde terminal
+
+
+$:  chmod 700 {path}
+Desc: will give read, write, execute permission to current user(creator) only. groups and others no permission.
+
+
+$: chmod 400 {path}
+Desc: Reading rights only, for the user who is owner (default creator)
+
+
+$: chmod 600 {path}
+Desc: Reading and Writing rights only, for the user who is owner (default creator)
+
+
+$: chmod 700 {path}
+Desc: Reading, Executing and Writing rights only, for the user who is owner (default creator)
+
+
+$: chmod u=rwx,g=,o=w {path}
+Desc: Reading, Executing and Writing rights only, for the user who is owner (default creator)
+Write permission for others
+Tip: can have any combination
+
+
+$: sudo chown {username}:{group_name} {filePath}
+Desc: To change file ownership. Can do just for username and just for group_name as well
+eg: sudo chwon user1: file1
+eg: sudo chwon :group1 file1
+eg: sudo chwon user1:group2 file1
+
+
+$: sudo chattr +i {filePath}
+Desc: To restrict deletion of file.
+eg: sudo chattr +i /tmp/homework/immutable
+
+
+$: ./tasks/taskProcess &
+Desc: to run task in background
+
+
+$: jobs
+Desc: The jobs command in Linux shows the background jobs running in your current shell session
+
+
+$: ps -ef | grep {filePath}
+$:  pgrep -f {processName}
+Desc: To the the PID
+
+
+$: free -h
+Desc: Shows current memory utilization. RAM load in Mem row. Swap in swap row
+
+
+$: nproc
+Desc: This gives the number of available processing units (cores).
+
+
+$: systemctl list-units
+Desc: to list all units
+
+
+$: sudo yum install {name} -y
+Desc: To install something on CentOS
+
+
+$: systemctl start {serviceName}
+Desc: to start a service
+
+$: systemctl status {serviceName}
+Desc: to get status of service
+
+$: systemctl stop {serviceName}
+Desc: to stop a service
+
+$: systemctl restart {serviceName}
+Desc: to restart a service
+
+$: systemctl enable {serviceName}
+Desc: to enable the service. Meaning it will automatically start on system restart
+
+$: systemctl status {serviceName}
+$: systemctl is-enabled {serviceName}.service
+Desc: To check if servcie is enabled
+
+
+$: touch /etc/systemd/system/{serviceName}.service
+$: chmod 664 /etc/systemd/system/{serviceName}.service
+Desc: creating a service filec and giving it permission. read write for user, read write for group and only read for others
+
+
+$: systemctl daemon-reload
+Desc: to reload systemctl. this needs to be done everytime you create a service file.
+
+
+$:  sudo setenforce 0
+$:  sudo restorecon -v {scriptPath}
+Desc: On CentOS or RHEL, SELinux often blocks scripts in /home/centos/... from being executed by services
+setenforce 0 will Temporarily set SELinux to permissive:
+setenforce 1 to restore it
+
+($: ls -Z /home/centos/tasks/service-script.sh)
+Look at the SELinux context (unconfined_u:object_r:...). If it’s wrong (like user_home_t), that’s your issue. 
+
+
+$: journalctl -u {serviceName}.service
+Desc: to get logs of a service
+
+$: journalctl -u {serviceName}.service -p err -b -x
+Desc: to get error logs. err can be replaced with other things as well. check doc
+
+
+$: yum search {name}
+Desc: to search a package
+
+
+$: yum remove {name} -y
+Desc: to remove a package. if a service, first stop it
+
+
+$: sudo firewall-cmd --add-service=http --permanent
+$: sudo firewall-cmd --reload
+Desc: To Make sure firewalld or iptables isn’t blocking port 80
+
+
+$: who
+Desc: to see ssh clients available. (look for entries like pts/0, which indicate SSH sessions)
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+File Permissions: Taks steps
+------------------------------------------------------------------------------------------------------------
+Create two users: user1, user2.
+Switch to user1.
+Create folder /tmp/homework with 700 permissions.
+Create 3 files inside /tmp/homework folder: read (content: Hello, permissions: 400), write (permissions: 600), execute (content: echo Hello, permissions: 700).
+Attempt to list /tmp/homework contents using user2.
+Fix /tmp/homework permissions to allow user2 to view but not modify files inside. Verify.
+Fix /tmp/homework permissions to allow user2 to view and modify files inside.
+Fix file permissions inside /tmp/homework to allow user2 actions on files according to their naming.
+Using user2 read contents of read file, write Hello inside write file, execute execute file.
+Using user1 create two more files inside /tmp/homework: immutable, ownership (permissions: 770).
+Change ownership of ownership file so that user2 would be able to write to it.
+Make immutable file immutable. Attempt to remove it. Fix permissions, remove it.
+
+Self-review:
+user2 is able to list contents of /tmp/homework folder, read read file, write to write file, execute execute file, write to ownership file
+
+Sol:
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------------
+Service : Taks steps
+------------------------------------------------------------------------------------------------------------
+
+List unit files available in your system.
+Install httpd using command yum install httpd.
+Start httpd service.
+Check httpd service status
+Restart httpd service.
+Enable httpd service. Verify that it is enabled.
+Create a script in your user's home directory named script.sh with the following content:
+#!/bin/bash
+sleep 1000
+
+Make the script executable.
+Create unit file called test.service that will be used for starting your script and place it where systemd will be able to use it.
+Start test service.
+Verify test service status.
+
+Sol:
+
+$: systemctl list-units
+Desc: to list all units
+
+$: sudo yum install httpd -y
+Desc: To install httpd
+
+$: systemctl start httpd
+Desc: to start a service
+
+$: systemctl status httpd
+Desc: to get status of service
+
+$: systemctl restart httpd
+Desc: to restart the httpd service
+
+$: systemctl enable httpd
+Desc: to enable the httpd service. Meaning it will automatically start on system restart
+
+$: systemctl is-enabled httpd
+Desc: to see if it is enabled
+
+
+$: vim tasks/service-script.sh
+#!/bin/bash
+sleep 1000
+Desc: creating file
+
+$: chmod +x tasks/service-script.sh
+Desc: making it executable
+
+$: touch /etc/systemd/system/test.service
+$: chmod 664 /etc/systemd/system/test.service
+Desc: creating a service filec called test and giving it permission.
+
+// File content
+
+[Unit]
+Description=Test Service to run service-script.sh
+
+[Service]
+ExecStart=/home/jayesh_pawar/tasks/service-script.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+// EOF
+
+
+$: systemctl daemon-reload
+Desc: to reload systemctl. this needs to be done everytime you create a service file.
+
+$:  sudo setenforce 0
+Desc: to make SELinux permissive
+
+$: systemctl start test
+
+$: systemctl status test
+
+
+$: scp {filePath} {username@ip}:{pathToStore}
+Desc: to move file to remote VM, using ssh
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------------
+SSH Task : 
+------------------------------------------------------------------------------------------------------------
+
+Setup 2 VMs: VM1 and VM2.
+Create user Name_Surname with home directory on VM2.
+Verify that sshd service and ssh clients are present on both machines.
+Verify that you are able to ping VM2 from VM1.
+Configure ssh keys for user Name_Surname on VM2.
+From VM1 ssh to VM2 under user Name_Surname using ssh keys (no password).
+Create ssh config file on VM1 that will configure VM2 host with user Name_Surname and its ssh key.
+Copy a file from VM1 to VM2 Name_Surname user's home directory using scp ./file VM2:~ command.
+
+Sol:
+
+$: systemctl status sshd
+Desc: to see service 
+
+$: who
+Desc: to see ssh clients
+
+(VM1)
+$: ping -c 4 {ipAddress}
+Desc: ping an IP, 4 times
+
+(VM2)
+$: sudo useradd -m -s /bin/bash jayesh_test
+$: sudo passwd jayesh_test
+Desc: creating and setting password for user
+
+(VM1)
+$: ssh-keygen -t rsa -f ~/.ssh/vm2_test_key
+Desc: Creating ssh key for user of VM2
+
+(VM1)
+$: ssh-copy-id -i ~/.ssh/vm2_test_key jayesh_test@192.168.0.149
+Desc: copying generated key to the created user on VM2
+
+(VM1)
+$: ssh -i .ssh/vm2_test_key jayesh_test@192.168.0.149
+Desc: logging in to user of VM2 from VM1
+
+(VM1)
+$: vim .ssh/config
+
+// content
+Host vm2
+    HostName 192.168.0.149
+    User jayesh_test
+    IdentityFile ~/.ssh/vm2_test_key
+
+// EOF
+
+(VM1)
+$: ssh vm2
+Desc: to login using config without the ssh file
+
+(VM1)
+$:  scp tasks/service-script.sh vm2:~
+Desc: to move a file from VM1 to user of VM2
+
+
+------------------------------------------------------------------------------------------------------------
