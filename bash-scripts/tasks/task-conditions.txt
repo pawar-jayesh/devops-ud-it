@@ -1,0 +1,68 @@
+create a script file in your home directory that does the following:
+
+checks if 1st and 2nd string arguments are equal and outputs the exit code of this operation
+checks if 1st string argument is longer than 2nd string argument and outputs the exit code of this operation
+checks if variable TEST is present in the environment (has non-zero length) and outputs the exit code of this operation
+checks if 3rd and 4th integer arguments are not equal and outputs the exit code of this operation
+checks if 3rd integer argument is greater or equal to 4th integer argument and outputs the exit code of this operation
+- run your script with "hi world 7 9" arguments
+
+- add TEST environment variable with "123" value
+
+- re-run the script with "hello hello 10 7" arguments
+
+Self-check:
+
+- first script run should return the following values:
+
+1
+
+1
+
+1
+
+0
+
+1
+
+- second script run should return the following values:
+
+0
+
+1
+
+0
+
+0
+
+0
+
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+
+#! /bin/bash
+
+echo "!st and 2nd argument equal?"
+[[ $1 = $2 ]]
+echo $?
+echo
+
+echo "Check if first string argument is longer than 2nd string argument"
+[[ $1 > $2 ]]
+echo $?
+echo
+
+echo "checking if variable TEST is present in environment(has non 0 length)"
+test -n "$(printenv TEST)"
+echo $?
+echo
+
+echo "Checking if 3rd and 4th integer argument are not equal"
+[[ $3 -ne $4 ]]
+echo $?
+echo
+
+echo "Checking if 3rd integer argument is greater or equal to 4th integer argument"
+[[ $3 -ge $4 ]]
+echo $?
+echo
