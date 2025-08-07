@@ -1,0 +1,33 @@
+create a script that does the following:
+
+accepts any number of int arguments
+outputs the sum of all arguments
+outputs the number of arguments
+outputs the average of all arguments
+- execute your script with the following arguments 1 2 3 4 5
+
+Self-check:
+
+- your script outputs the following:
+
+Sum: 15
+Args number: 5
+Result: 3
+
+----------------------------------------------------------------------------------------------------------------
+
+#!/bin/bash
+
+SUM=0
+AVG=0
+COUNT=$#
+
+for num in "$@"
+do
+  (( SUM = SUM + num ))
+done
+
+echo "SUM: $SUM"
+echo "Args number: $COUNT"
+(( AVG = SUM / COUNT ))
+echo "Result: $AVG"
