@@ -1,0 +1,66 @@
+create a script that does the following:
+
+asks the user to input a filename
+writes the following poem to the file specified by user:
+An old silent pond...
+A frog jumps into the pond,
+splash! Silence again.
+
+Autumn moonlight-
+a worm digs silently
+into the chestnut.
+
+In the twilight rain
+these brilliant-hued hibiscus -
+A lovely sunset.
+
+outputs the poem to the terminal
+outputs the message "Task finished" to stderr
+- run your script, specify output as the file to write the poem to, redirect stdout to /dev/null, redirect stderr to stderr file
+
+Self-check:
+
+- script returns no output
+
+- cat output command returns:
+
+An old silent pond...
+A frog jumps into the pond,
+splash! Silence again.
+
+Autumn moonlight-
+a worm digs silently
+into the chestnut.
+
+In the twilight rain
+these brilliant-hued hibiscus -
+A lovely sunset.
+
+- cat stderr command returns:
+
+Task finished
+
+------------------------------------------------------------------------------------------------------------------------
+run cmd:  ./{name}.sh > /dev/null 2> stderr.txt
+
+#!/bin/bash
+
+#read -p "Input a file name: " FILENAME
+echo -n "Enter the filename to write the poem: " > /dev/tty
+read FILENAME < /dev/tty
+
+cat<< TEN > ${FILENAME}.txt
+An old silent pond...
+A frog jumps into the pond,
+splash! Silence again.
+
+Autumn moonlight-
+a worm digs silently
+into the chestnut.
+
+In the twilight rain
+these brilliant-hued hibiscus -
+A lovely sunset.
+TEN
+cat ${FILENAME}.txt
+echo "Task finished" >&2
