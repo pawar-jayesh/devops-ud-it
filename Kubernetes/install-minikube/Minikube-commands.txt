@@ -1,0 +1,61 @@
+## Dependency => Oracle VM Virtualbox
+##To Setup Chocolaty
+##Open powershell as administrator and execute below command 
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+## If getting Error, Turn Off Your Anti Virus for a moment and try again.
+
+## Install Minikube with chocolaty
+## Close powershell and start again with admin
+
+choco install minikube kubernetes-cli -y
+
+
+## In Git Bash
+minikube --help
+
+##Execute to Setup Minikube cluster
+minikube start
+
+## To see if it is up and running (should see a master node)
+cmd: kubectl get nodes
+
+## to see content of kubectl config
+cmd: cat .kube/config
+
+
+## Getting Started 
+URL: https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+
+Creating deployment
+cmd: kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
+
+cmd: kubectl get pod
+You will see ur pod running
+
+cmd:  kubectl get deploy
+To see the deployments
+
+Exposing the service
+cmd: kubectl expose deployment hello-minikube --type=NodePort --port=8080
+
+To get the url of the service exposed
+cmd: minikube service hello-minikube / minikube service hello-minikube --url
+
+To get all the services
+cmd: kubectl get svc
+
+To delete the service
+cmd: kubectl delete svc hello-minikube
+
+To delete deploy
+cmd: kubectl delete deploy hello-minikube
+
+To stop minikube
+cmd: minikube stop
+
+To remove minikube
+cmd: minikube delete    (Oracle Virtualbox will show no VM now)
+
+
+
+
