@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+  - name: command-demo-container
+    image: debian
+    env:
+    - name: MESSAGE
+      value: "Jayesh Pawar"
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        printenv HOSTNAME KUBERNETES_PORT;
+        echo "--------------------------------------";
+        echo "$MESSAGE"
+  restartPolicy: OnFailure
+
