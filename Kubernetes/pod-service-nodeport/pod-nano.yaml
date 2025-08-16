@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nanoapp
+  labels:
+    app: nanoapp
+spec:
+  containers:
+    - name: appcontainer
+      image: jayeshpawar08/nanoimg:latest
+      ports:
+        - name: nanoapp-port
+          containerPort: 80
