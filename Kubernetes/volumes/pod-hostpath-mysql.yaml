@@ -1,0 +1,25 @@
+---
+# This manifest mounts /data/foo on the host as /foo inside the
+# single container that runs within the hostpath-example-linux Pod.
+#
+# The mount into the container is read-only.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-pod
+spec:
+  # os: { name: linux }
+  # nodeSelector:
+  #   kubernetes.io/os: linux
+  containers:
+  - name: mysql
+    image: mysql:5.7
+    volumeMounts:
+    - mountPath: /var/lib/mysql
+      name: db-volume
+  volumes:
+  - name: db-volume
+    # mount /data/foo, but only if that directory already exists
+    hostPath:
+      path: /data/    # directory location on host
+      type: DirectoryOrCreate # this field is optional
